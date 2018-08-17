@@ -1,8 +1,6 @@
 # Mobile Web Specialist Certification Course
 
-## Project Overview: Stage 1
-
-## _Three Stage Course Material Project - Restaurant Reviews_
+## Three Stage Course Material Project - Restaurant Reviews: Project Overview: Stage 1
 
 ## How to run the server
 
