@@ -17,23 +17,27 @@
             <h1><a href="/">Restaurant Reviews</a></h1>
         </nav>
     </header>
+    <!-- ARIA SOURCE LINK: https://www.w3.org/TR/wai-aria-1.1/#aria-label -->
+    <main id="maincontent" role="maincontent">
+        <a href="#filter" class="skip-links">Skip to main-content</a>
 
-    <main id="maincontent">
-        <section id="map-container">
-            <div id="map"></div>
+        <section id="map-container" role="map container">
+            <div id="map" aria-labelledby="map"></div>
         </section>
 
         <section>
-            <div class="filter-options">
+            <div class="filter-options" id="filter" aria-labelledby="select">
                 <h2>Filter Results</h2>
-                <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
-          <option value="all">All Neighborhoods</option>
-        </select>
-                <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
-          <option value="all">All Cuisines</option>
-        </select>
+
+                <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-labelledby="neighborhood list"> 
+                    <option value="all">All Neighborhoods</option>
+                </select>
+
+                <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-labelledby="cuisines selection">
+                     <option value="all">All Cuisines</option>
+                </select>
             </div>
-            <ul id="restaurants-list"></ul>
+            <ul id="restaurants-list" aria-labelledby="restaurants-list"></ul>
         </section>
     </main>
 
