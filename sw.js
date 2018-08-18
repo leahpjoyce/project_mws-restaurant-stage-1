@@ -3,9 +3,10 @@ Credits Service Worker to Matt Gaunt
 https://developers.google.com/web/fundamentals/primers/service-workers/
 */
 
-var CACHE_NAME = 'my-site-cache-v2';
+var CACHE_NAME = 'my-site-cache-v3';
 var urlsToCache = [
     "./",
+    "./sw_registration.js",
     "index.html",
     "restaurant.html",
     "css/styles.css",
