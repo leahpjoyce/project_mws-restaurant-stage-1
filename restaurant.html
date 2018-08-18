@@ -18,25 +18,28 @@
         <nav>
             <h1><a href="/">Restaurant Reviews</a></h1>
         </nav>
-        <ul id="breadcrumb">
+        <ul id="breadcrumb" aria-labelledby="navigation">
+            <a href="#filter" class="skip-links">Skip to main-content</a>
             <li><a href="/">Home</a></li>
         </ul>
     </header>
 
-    <main id="maincontent">
+    <main id="maincontent" role="maincontent">
         <section id="map-container">
             <div id="map"></div>
         </section>
 
-        <section id="restaurant-container">
-            <h1 id="restaurant-name"></h1>
-            <img id="restaurant-img">
-            <p id="restaurant-cuisine"></p>
-            <p id="restaurant-address"></p>
-            <table id="restaurant-hours"></table>
+        <section id=filter role="skip">
+            <section id="restaurant-container" aria-labelledby="restaurant container">
+                <h1 id="restaurant-name"></h1>
+                <img id="restaurant-img" alt="">
+                <p id="restaurant-cuisine"></p>
+                <p id="restaurant-address"></p>
+                <table id="restaurant-hours" aria-labelledby="restaurant hours"></table>
+            </section>
         </section>
 
-        <section id="reviews-container">
+        <section id="reviews-container" aria-labelledby="reviews">
             <ul id="reviews-list"></ul>
         </section>
 
