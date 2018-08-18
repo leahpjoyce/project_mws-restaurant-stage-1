@@ -1,4 +1,4 @@
-let staticCacheName = "v1";
+let staticCacheName = "v2";
 let urlsToCache = [
     "./",
     "./sw_registration.js",
