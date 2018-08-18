@@ -1,7 +1,11 @@
-let staticCacheName = "v2";
-let urlsToCache = [
+/*
+Credits Service Worker to Matt Gaunt
+https://developers.google.com/web/fundamentals/primers/service-workers/
+*/
+
+var CACHE_NAME = 'my-site-cache-v1';
+var urlsToCache = [
     "./",
-    "./sw_registration.js",
     "index.html",
     "restaurant.html",
     "css/styles.css",
@@ -21,25 +25,33 @@ let urlsToCache = [
     "img/10.jpg"
 ];
 
-self.addEventListener("install", event => {
+self.addEventListener('install', function(event) {
+    // Perform install steps
     event.waitUntil(
-        caches
-        .open(staticCacheName)
-        .then(cache => cache.addAll(urlsToCache))
-        .then(self.skipWaiting())
+        caches.open(CACHE_NAME)
+        .then(function(cache) {
+            //console.log('Opened cache');
+            return cache.addAll(urlsToCache);
+        })
     );
 });
 
-self.addEventListener("activate", event => {
+self.addEventListener('activate', function(event) {
+
+    var cacheWhitelist = ['pages-cache-v1', 'blog-posts-cache-v1'];
+
     event.waitUntil(
-        caches.keys().then(cacheNames => Promise.all(cacheNames.map(cache => {
-            if (cache !== staticCacheName) {
-                console.log("[ServiceWorker] removing cached files from ", cache);
-                return caches.delete(cache);
-            }
-        })))
-    )
-})
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(cacheName) {
+                    if (cacheWhitelist.indexOf(cacheName) === -1) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
+});
 
 self.addEventListener("fetch", event => {
     if (event.request.url.startsWith(self.location.origin)) {
